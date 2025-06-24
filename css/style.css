@@ -1,0 +1,118 @@
+/* css/style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  background: #007bff;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a, .navbar button {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar button:hover, .navbar a:hover {
+  color: #ccc;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.blog-card {
+  border: 1px solid #007bff;
+  padding: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s;
+}
+
+.blog-card:hover {
+  transform: scale(1.05);
+}
+
+#post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: 20px 0;
+}
+
+#post-form label {
+  font-weight: bold;
+}
+
+#post-form input,
+#post-form textarea {
+  padding: 8px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+
+#post-form textarea {
+  min-height: 100px;
+}
+
+#post-form button {
+ background: #007bff;
+ color: white;
+ padding: 10px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+}
+
+#post-form button:hover {
+  background: #0056b3;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}

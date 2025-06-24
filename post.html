@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post | Isaiah Nyariki's Dev Blog</title>
+  <meta name="description" content="Developer blog post">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/post.html">Create Post</a></li>
+        <li><a href="https://swaynel-s-profile.vercel.app">Portfolio</a></li>
+        <li><a href="https://linkedin.com/in/isaiah-nyariki">LinkedIn</a></li>
+        <li><a href="https://isaiahnyariki.com">Personal Blog</a></li>
+        <li><button id="login-btn">Log in with GitHub</button></li>
+        <li><button id="logout-btn" style="display: none;">Log out</button></li>
+      </ul>
+    </nav>
+    <main>
+      <div id="post-content"></div>
+      <div id="post-form" style="display: none;">
+        <h2>Create/Edit Post</h2>
+        <form id="blog-post-form">
+          <label for="title">Title:</label>
+          <input type="text" id="title" required>
+          <label for="excerpt">Excerpt:</label>
+          <textarea id="excerpt" required></textarea>
+          <label for="content">Content (HTML):</label>
+          <textarea id="content" required></textarea>
+          <button type="submit">Submit Post</button>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <p>© 2025 Isaiah Nyariki. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com/swaynel">GitHub</a>
+        <a href="https://linkedin.com/in/isaiah-nyariki">LinkedIn</a>
+        <a href="https://isaiahnyariki.com">Personal Blog</a>
+      </div>
+    </footer>
+  </div>
+  <script src="/js/firebase.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/blog.js"></script>
+  <script src="/js/post-form.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
