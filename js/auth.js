@@ -1,5 +1,6 @@
 // js/auth.js
-import { signInWithPopup, GithubAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebase/9.24.1/firebase-auth.js";
+import { auth } from "./firebase.js";
+import { signInWithPopup, GithubAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
 // GitHub login
 const provider = new GithubAuthProvider();
