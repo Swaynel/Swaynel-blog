@@ -4,16 +4,16 @@ import { login, logout, onAuthChange } from "./auth.js";
 import { initPostForm } from "./post-form.js";
 import DOMPurify from "https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.0/purify.min.js";
 
-// Init
+// Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
-  // Auth handling
+  // Handle auth state
   const loginBtn = document.getElementById("login-btn");
   const logoutBtn = document.getElementById("logout-btn");
   onAuthChange(user => {
     if (user) {
       loginBtn.style.display = "none";
       logoutBtn.style.display = "inline-block";
-      if (window.location.pathname === "/post.html") {
+      if (window.location.pathname === "/post.html" && !window.location.search) {
         document.getElementById("post-form").style.display = "block";
       }
     } else {
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   loginBtn.addEventListener("click", login);
   logoutBtn.addEventListener("click", logout);
 
-  // Load content
-  if (window.location.pathname === "/") {
+  // Load content based on page
+  if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
     loadBlogPosts();
   } else if (window.location.pathname === "/post.html") {
     const slug = new URLSearchParams(window.location.search).get("slug");
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Load all posts
+// Load all blog posts
 async function loadBlogPosts() {
   const postsContainer = document.getElementById("blog-posts");
   try {
@@ -50,7 +50,7 @@ async function loadBlogPosts() {
           <a href="/post.html?slug=${post.slug}" class="blog-card">
             <h2>${post.title}</h2>
             <p>${post.excerpt}</p>
-            <span>${post.date}</span>
+            <span>By ${post.author.displayName} on ${post.date}</span>
           </a>
         `
       )
@@ -61,7 +61,7 @@ async function loadBlogPosts() {
   }
 }
 
-// Load single post
+// Load single blog post
 async function loadBlogPost(slug) {
   const postContainer = document.getElementById("post-content");
   try {
@@ -69,7 +69,7 @@ async function loadBlogPost(slug) {
     if (post) {
       postContainer.innerHTML = `
         <h1>${post.title}</h1>
-        <p>${post.date}</p>
+        <p>By ${post.author.displayName} on ${post.date}</p>
         <div>${DOMPurify.sanitize(post.content)}</div>
       `;
     } else {
